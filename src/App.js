@@ -4,11 +4,11 @@ import React from 'react'
 
 function App() {
   return (
-    <>
-      <div style={{ display: "flex", justifyContent: "center" }}>   {/* -> React Fragments */}
+    <> {/* -> React Fragments */}
+      <div style={{ display: "flex", justifyContent: "center" }}>   
         <h1> Hello, World!</h1>
       </div>
-      <div style={{ display: "flex", justifyContent: "center" }}>   {/* -> React Fragments */}
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <h1> Hello, World2!</h1>
       </div>
     </>
