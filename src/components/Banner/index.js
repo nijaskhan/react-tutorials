@@ -2,6 +2,10 @@ import React from 'react'
 import CustomButton from '../Button';
 
 const Banner = () => {
+    function buttonClick() {
+        console.log("Button clicked!");
+    }
+
     return (
         <div
             style={{
@@ -15,7 +19,10 @@ const Banner = () => {
             }}
         >
             <h1>Banner Page</h1>
-            <CustomButton />
+            <CustomButton
+                label={"click me to open banner image"}
+                handleButtonClick={buttonClick}
+            /> {/* `props` defined */}
         </div>
     )
 }

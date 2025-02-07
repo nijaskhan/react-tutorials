@@ -1,4 +1,5 @@
 import React from 'react'
+import CustomButton from '../Button'
 
 export const About = () => {
     return (
@@ -18,6 +19,11 @@ export const About = () => {
 }
 
 export const About2 = () => {
+
+    const handleClick = () => {
+        console.log('Navigate to About us page');
+    }
+
     return (
         <>
             <div
@@ -25,10 +31,21 @@ export const About2 = () => {
                 style={{
                     display: "flex",
                     justifyContent: "center",
-                    textDecoration: "underline"
+                    alignItems: "center",
+                    flexDirection: "column",
+                    textDecoration: "underline",
+                    padding: "10px"
                 }}
             >
-                <h1>About Page 2</h1>
+                <div>
+                    <h1>About Page 2</h1>
+                </div>
+                <div>
+                    <CustomButton
+                        label={"click here to navigate to About us page"}
+                        handleButtonClick={handleClick}
+                    />
+                </div>
             </div>
         </>
     )
