@@ -1,5 +1,9 @@
 import { useRef, useState } from "react";
 
+// whenever the 'npm install' causes you error, 
+    // try this instead `npm install --legacy-peer-deps`
+    // try this instead `npm install --force`
+
 function FocusInput({ btnRef }) {
     const inputRef = useRef(null);
     const [inputValue, setInputValue] = useState("");
