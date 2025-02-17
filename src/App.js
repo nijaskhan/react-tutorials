@@ -1,75 +1,42 @@
 import React, { useRef, useState } from 'react'
 import './App.css';
 import Banner from './components/Banner';
-import { About, About2 } from './components/About';
-import CheckAuthorization from './components/CheckAuthorization';
-import Counter from './components/Counter';
-import FocusInput from './components/FocusInput';
-
+import AxiosData from './components/AxiosData';
+import CustomButton from './components/CustomButton';
 // shorthand for creating component: `rafce`
 
-function App() {
-  const btnRef = useRef(null);
-  const [username, setUsername] = useState("");
+// useEffect - react hook
 
-  const user = "nijas";
+
+function App() {
+  const [showAxiosData, setShowAxiosData] = useState(false);
+
+  function handleShowAxiosData() {
+    setShowAxiosData(!showAxiosData);
+  }
 
   return (
     <> {/* -> React Fragments */}
+      <h1>Connecting to an API in React - useEffect, fetch, & Axios</h1>
+      <Banner />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          margin: "10px 0"
+        }}
+      >
+        <CustomButton
+          label={"Show Axios Data"}
+          handleButtonClick={handleShowAxiosData}
+        />
+      </div>
+
       {
-        user === "nijas" ? (
-          <>
-            <div
-              style={{ margin: "20px 0" }}
-            >
-              <Banner />
-            </div>
-
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 16
-              }}
-            >
-              <About />
-              <About2 />
-            </div>
-
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-                margin: "10px 0"
-              }}
-            >
-              <h1>Counter</h1>
-              <Counter />
-            </div>
-
-            {/* Input field value using useState */}
-            <div style={{ marginTop: "30px" }}>
-              <input
-                type="text"
-                placeholder="Enter text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-              <p>You typed: {username}</p>
-            </div>
-
-            <div style={{ marginTop: "25px", marginBottom: "25px", display: "flex", justifyContent: "center" }}>
-              <button ref={btnRef} onClick={() => alert("I am ref button")}>I am just a Button</button>
-            </div>
-
-            <div style={{ marginTop: "25px", marginBottom: "25px", display: "flex", justifyContent: "center" }}>
-              <FocusInput btnRef={btnRef} />
-            </div>
-
-          </>
-        ) : <CheckAuthorization username={user} />
+        showAxiosData && (
+          <AxiosData />
+        )
       }
     </>
   )
