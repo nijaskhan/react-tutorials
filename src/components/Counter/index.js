@@ -30,7 +30,7 @@ const Counter = () => {
                 <h3>Count: {count}</h3>
             </div>
 
-            <div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
                 <button onClick={() => handleClick(1)}>Increment</button>
                 {
                     showDecrement ? (

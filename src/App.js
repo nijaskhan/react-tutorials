@@ -1,44 +1,23 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
-import Banner from './components/Banner';
-import AxiosData from './components/AxiosData';
-import CustomButton from './components/CustomButton';
-// shorthand for creating component: `rafce`
-
-// useEffect - react hook
+import Home from './components/Home';
+import { About } from './components/About';
+import Counter from './components/Counter';
+import Layout from './components/Layout';
 
 
 function App() {
-  const [showAxiosData, setShowAxiosData] = useState(false);
-
-  function handleShowAxiosData() {
-    setShowAxiosData(!showAxiosData);
-  }
-
   return (
-    <> {/* -> React Fragments */}
-      <h1>Connecting to an API in React - useEffect, fetch, & Axios</h1>
-      <Banner />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          margin: "10px 0"
-        }}
-      >
-        <CustomButton
-          label={"Show Axios Data"}
-          handleButtonClick={handleShowAxiosData}
-        />
-      </div>
-
-      {
-        showAxiosData && (
-          <AxiosData />
-        )
-      }
-    </>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/counter" element={<Counter />} />
+        </Route>
+      </Routes>
+    </Router>
   )
 };
 
