@@ -1,24 +1,21 @@
-import React, { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import './App.css';
-import Home from './components/Home';
-import { About } from './components/About';
-import Counter from './components/Counter';
-import Layout from './components/Layout';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./components/Home";
+import UserDetails, { userLoader } from "./components/UserDetails";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/user/:id",
+    element: <UserDetails />,
+    loader: userLoader
+  },
+]);
 
 function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/counter" element={<Counter />} />
-        </Route>
-      </Routes>
-    </Router>
-  )
-};
+  return <RouterProvider router={router} />;
+}
 
 export default App;

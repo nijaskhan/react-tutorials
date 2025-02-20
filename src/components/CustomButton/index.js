@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CustomButton = (props) => {
+const CustomButton = ({ label, handleButtonClick }) => {
     return (
         <button
             style={{
@@ -14,9 +14,9 @@ const CustomButton = (props) => {
                 fontSize: '16px',
                 fontWeight: 'bold',
             }}
-            onClick={props.handleButtonClick}
+            onClick={handleButtonClick}
         >
-            {props.label}
+            {label}
         </button>
     )
 }
