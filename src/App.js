@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/Home";
 import UserDetails, { userLoader } from "./components/UserDetails";
+import Counter from "./components/Counter";
 
 const router = createBrowserRouter([
   {
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
     path: "/user/:id",
     element: <UserDetails />,
     loader: userLoader
+  },
+  {
+    path: "/counter",
+    element: <Counter />,
   },
 ]);
 

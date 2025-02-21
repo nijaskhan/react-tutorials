@@ -1,39 +1,25 @@
 import React, { useState } from 'react';
 
 const Counter = () => {
-
-    const [count, setCount] = useState(0);
-    const [showDecrement, setShowDecrement] = useState(false);
-
+    
     const handleClick = (value) => {
-        // 2 + -1 = 1
-        // 2 + 1 = 3
-
-        // console.log("decrement count: ", count);
-        // console.log("decrement value: ", value);
-
-        if ((count + value) <= 0) {
-            setShowDecrement(false);
-        } else {
-            setShowDecrement(true);
-        }
-        setCount(count + value);
+        console.log("decrement value: ", value);
     }
 
     const handleReset = () => {
-        setCount(0);
+        console.log("handle reset clicked");
     }
 
     return (
         <div>
             <div style={{ display: "flex", justifyContent: "center" }}>
-                <h3>Count: {count}</h3>
+                <h3>Count: 0</h3>
             </div>
 
             <div style={{ display: "flex", justifyContent: "center" }}>
                 <button onClick={() => handleClick(1)}>Increment</button>
                 {
-                    showDecrement ? (
+                    false ? (
                         <button
                             style={{ marginLeft: "6px" }}
                             onClick={() => handleClick(-1)}

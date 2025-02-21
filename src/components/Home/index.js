@@ -30,6 +30,7 @@ const Home = () => {
                 <CustomButton
                     label="search user by Id"
                     handleButtonClick={handleSearch}
+                    userId={userId}
                 />
             </div>
         </div>
