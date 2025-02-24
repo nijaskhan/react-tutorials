@@ -8,15 +8,9 @@ const counterSlice = createSlice({
     },
     reducers: {
         increment: (state, action) => {
+            // console.log("action: ", action);
+            
             state.value += action.payload;
-            if (state.value === 0) {
-                state.showDecrement = false;
-            } else {
-                state.showDecrement = true;
-            }
-        },
-        decrement: (state, action) => {
-            state.value -= action.payload;
             if (state.value === 0) {
                 state.showDecrement = false;
             } else {
@@ -32,7 +26,6 @@ const counterSlice = createSlice({
 
 export const {
     increment,
-    decrement,
     reset
 } = counterSlice.actions;
 
