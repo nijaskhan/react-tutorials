@@ -5,7 +5,7 @@ const Home = () => {
                 <h1>User List</h1>
             </div>
             <div className="d-flex justify-content-center">
-                <table className="table table-bordered table-hover col-6">
+                <table className="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th>Name</th>

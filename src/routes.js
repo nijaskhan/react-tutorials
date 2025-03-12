@@ -2,10 +2,9 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import LoginPage from "./Layout/Authentication/LoginPage";
 import Home from "./Layout/Home";
 
-// Dummy authentication function
 const isAuthenticated = () => {
     // Replace with your actual authentication logic
-    return true;
+    return false;
 };
 
 // Protected Route Component
