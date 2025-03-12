@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CustomButton from "../CustomButton";
+import CustomButton from "../../components/CustomButton";
 
 const Home = () => {
     const [userId, setUserId] = useState("");
