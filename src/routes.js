@@ -5,12 +5,17 @@ import Home from "./Layout/Home";
 // Dummy authentication function
 const isAuthenticated = () => {
     // Replace with your actual authentication logic
-    return false;
+    return true;
 };
 
 // Protected Route Component
 const ProtectedRoute = ({ element }) => {
     return isAuthenticated() ? element : <Navigate to="/login" />;
+}
+
+// Fallback Route Component
+const FallbackRoute = () => {
+    return isAuthenticated() ? <Navigate to="/" /> : <Navigate to="/authentication/login" />;
 }
 
 const routes = createBrowserRouter([
@@ -27,7 +32,7 @@ const routes = createBrowserRouter([
     // fallback routes
     {
         path: "*",
-        element: <Navigate to="/authentication/login" />,
+        element: <FallbackRoute />,
     },
 ]);
 
