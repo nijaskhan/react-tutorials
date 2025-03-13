@@ -3,13 +3,18 @@ import LoginPage from "./Layout/Authentication/LoginPage";
 import Home from "./Layout/Home";
 
 const isAuthenticated = () => {
-    // Replace with your actual authentication logic
+    const token = JSON.parse(localStorage.getItem('@token'));
+    const user = JSON.parse(localStorage.getItem('@entri_user'));
+
+    if (user && token) {
+        return true;
+    }
     return false;
 };
 
 // Protected Route Component
 const ProtectedRoute = ({ element }) => {
-    return isAuthenticated() ? element : <Navigate to="/login" />;
+    return isAuthenticated() ? element : <Navigate to="/authentication/login" />;
 }
 
 // Fallback Route Component

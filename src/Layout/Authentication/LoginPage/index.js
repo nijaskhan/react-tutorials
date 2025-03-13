@@ -1,9 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
+import { userLogin } from '../../../apiUtils/userApi';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const token = JSON.parse(localStorage.getItem('@token'));
+        const user = JSON.parse(localStorage.getItem('@entri_user'));
+
+        if (user && token) {
+            navigate('/');
+            return;
+        } else {
+            localStorage.removeItem('@token');
+            localStorage.removeItem('@entri_user');
+            toast.info("session expired, please login again");
+
+            navigate('/authentication/login');
+        }
+        // eslint-disable-next-line
+    }, []);
 
     const isValid = () => {
         if (email && email?.trim().length > 0 && password && password?.trim().length > 0) {
@@ -14,17 +35,25 @@ const LoginPage = () => {
         }
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         // trimming the white empty spaces
         email.trim();
         password.trim();
         // checking for validation
         if (isValid()) {
-            console.log("Email: ", email);
-            console.log("Password: ", password);
+            // make api call here
+            const response = await userLogin({ email: email, password: password });
+            console.log("response from login: ", response);
+            if (response?.success) {
+                localStorage.setItem("@token", JSON.stringify(response?.token));
+                localStorage.setItem("@entri_user", JSON.stringify(response?.data));
+                navigate('/');
+            } else {
+                toast.error("Email or Password is invalid!");
+            }
         } else {
-            toast("Please enter a valid email");
+            toast.warning("Please enter a valid email");
         }
     }
 
