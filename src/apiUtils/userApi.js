@@ -12,7 +12,11 @@ export const userLogin = async (payload) => {
 }
 
 export const getUsers = async () => {
-    const result = await axiosInstance.get('/getUsers');
-    console.log("result: ", result);
-    return result?.data;
+    try {
+        const result = await axiosInstance.get('/getUsers');
+        console.log("result: ", result);
+        return result?.data;
+    } catch (err) {
+        return false;
+    }
 }
