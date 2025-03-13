@@ -59,7 +59,7 @@ function App() {
         ) : <CheckAuthorization username={user} />
       }
     </>
-  )
-};
+  );
+}
 
 export default App;
